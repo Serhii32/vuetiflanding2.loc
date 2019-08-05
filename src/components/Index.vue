@@ -10,20 +10,56 @@
 		</v-layout>
 		<v-layout wrap>
 			<v-tabs>
-				<v-tab v-for="(tabItem, i) in tabItems" :key="i" :href="'#tab-' + i">{{ tabItem.name }}</v-tab>
-				<!-- <v-tabs-items> -->
-					<v-tab-item v-for="(tabItem, i) in tabItems" :key="i" :value="'tab-' + i">{{ tabItem.description }}</v-tab-item>
-				<!-- </v-tabs-items>		    -->
+				<v-tab v-for="(doorType, i) in doorTypes" :key="i" :href="'#tab-' + i">{{ doorType.name }}</v-tab>
+					<v-tab-item v-for="(doorType, i) in doorTypes" :key="i" :value="'tab-' + i">{{ doorType.description }}</v-tab-item>
 			</v-tabs>
 		</v-layout>
 		<v-layout wrap>
-			<v-card max-width="344" class="mx-auto">
-				<v-card-title>I'm a title</v-card-title>
-				<v-card-text>I'm card text</v-card-text>
-				<v-card-actions>
-					<v-btn text>Click</v-btn>
-				</v-card-actions>
-			</v-card>
+			<swiper :options="swiperOption">
+				<swiper-slide>Slide 1</swiper-slide>
+				<swiper-slide>Slide 2</swiper-slide>
+				<swiper-slide>Slide 3</swiper-slide>
+				<swiper-slide>Slide 4</swiper-slide>
+				<swiper-slide>Slide 5</swiper-slide>
+				<swiper-slide>Slide 6</swiper-slide>
+				<swiper-slide>Slide 7</swiper-slide>
+				<div class="swiper-pagination" slot="pagination"></div>
+			</swiper>
+		</v-layout>
+		<v-layout wrap>
+			<v-tabs>
+				<v-tab v-for="(uniqueDoor, i) in uniqueDoors" :key="i" :href="'#tab-' + i">{{ uniqueDoor.name }}</v-tab>
+					<v-tab-item v-for="(uniqueDoor, i) in uniqueDoors" :key="i" :value="'tab-' + i">{{ uniqueDoor.description }}</v-tab-item>
+			</v-tabs>
+		</v-layout>
+		<v-layout wrap align-center justify-center fill-height>
+			<v-flex xs12 md4>
+				<v-hover v-slot:default="{ hover }">
+					<v-card width="100%" height="500px">
+						<v-card-media :src="require('../assets/first-block.jpg')" height="200px"></v-card-media>
+						<v-card-title  primary-title>I'm a title</v-card-title>
+						<v-card-text>I'm card text</v-card-text>
+					</v-card>
+				</v-hover>
+			</v-flex>
+			<v-flex xs12 md4>
+				<v-hover v-slot:default="{ hover }">
+					<v-card width="100%" height="500px">
+						<v-card-media :src="require('../assets/first-block.jpg')" height="200px"></v-card-media>
+						<v-card-title  primary-title>I'm a title</v-card-title>
+						<v-card-text>I'm card text</v-card-text>
+					</v-card>
+				</v-hover>
+			</v-flex>
+			<v-flex xs12 md4>
+				<v-hover v-slot:default="{ hover }">
+					<v-card width="100%" height="500px">
+						<v-card-media :src="require('../assets/first-block.jpg')" height="200px"></v-card-media>
+						<v-card-title  primary-title>I'm a title</v-card-title>
+						<v-card-text>I'm card text</v-card-text>
+					</v-card>
+				</v-hover>
+			</v-flex>
 		</v-layout>
 	</v-container>
 </template>
@@ -31,7 +67,7 @@
 	export default {
 		data () {
 			return {
-				tabItems: [
+				doorTypes: [
 					{
 						name: 'Деревянные',
 						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
@@ -49,6 +85,40 @@
 						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 					}
 				],
+				uniqueDoors: [
+					{
+						name: 'Деревянные',
+						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+					},
+					{
+						name: 'МДФ',
+						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+					},
+					{
+						name: 'Шпонированные',
+						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+					},
+					{
+						name: 'Под покраску',
+						description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+					}
+				],
+				swiperOption: {
+					effect: 'coverflow',
+					grabCursor: true,
+					centeredSlides: true,
+					slidesPerView: 'auto',
+					coverflowEffect: {
+						rotate: 50,
+						stretch: 0,
+						depth: 100,
+						modifier: 1,
+						slideShadows : true
+					},
+					pagination: {
+						el: '.swiper-pagination'
+					}
+				},
 				playerOptions: {
 					height: '360',
 					autoplay: true,

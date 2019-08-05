@@ -4,10 +4,12 @@ import vuetify from './plugins/vuetify';
 
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
-Vue.use(VueVideoPlayer, /* {
-  options: global default options,
-  events: global videojs events
-} */)
+Vue.use(VueVideoPlayer)
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
+
 
 Vue.config.productionTip = false
 new Vue({
