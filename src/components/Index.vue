@@ -1,19 +1,18 @@
 <template>
 	<v-container fluid pa-0>
 		<v-layout wrap>
-			<v-img width="100%" height="100vh" :src="require('../assets/first-block.jpg')">
-				<v-layout>
-					<v-flex xs12 sm6>
-						<div class="title font-weight-bold text-uppercase ma-auto">Межкомнатные двери в Виннице - более 600 моделей в наличии в магазине</div>
+			<v-img width="100%" min-height="100vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('../assets/first-block.jpg')">
+				<v-layout align-center justify-center row fill-height>
+					<v-flex xs12 sm6 class="px-10">
+						<div style="text-shadow: rgb(36, 32, 32) 0px 0px 6px; color: rgb(185, 185, 185);" class="display-3 text-uppercase ma-auto">Межкомнатные двери в Виннице</div>
+						<div style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline text-uppercase ma-auto">более 600 моделей в наличии в магазине</div>
 					</v-flex>
-					<v-flex xs12 sm6>
-						
-					</v-flex>
+					<v-flex xs12 sm6></v-flex>
 				</v-layout>
 			</v-img>
 		</v-layout>
 		<v-layout wrap>
-			<video-player  class="vjs-custom-skin" :options="playerOptions" :playsinline="true"></video-player>
+			<video-player style="width: 100%" class="vjs-custom-skin vjs-big-play-centered" :options="playerOptions" :playsinline="true"></video-player>
 		</v-layout>
 		<v-layout wrap class="pa-10">
 			<div class="title font-weight-bold text-uppercase ma-auto">лидеры продаж</div>
@@ -38,7 +37,9 @@
 			<v-flex xs12 md4 v-for="(advantage, i) in advantages" :key="advantage.title + '_' + i">
 				<v-card style="max-width: 400px; min-height: 350px;" width="90%" class="ma-auto">
 					<v-img :src="advantage.photo" height="200px"></v-img>
-					<v-card-title  primary-title class="text-center">{{advantage.title}}</v-card-title>
+					<v-card-title  primary-title>
+						<span class="ma-auto">{{advantage.title}}</span>
+					</v-card-title>
 					<v-card-text>{{advantage.description}}</v-card-text>
 				</v-card>
 			</v-flex>
@@ -187,19 +188,15 @@
 					},
 				],
 				playerOptions: {
-					// height: '100vh',
-					// width: '100%',
 					autoplay: true,
 					muted: true,
-					responsive: true,
+					loop: true,
+					aspectRatio: '16:9',					
 					language: 'ru',
 					playbackRates: [0.7, 1.0, 1.5, 2.0],
 					sources: [{
 						type: "video/mp4",
-						// mp4
 						src: "http://vjs.zencdn.net/v/oceans.mp4",
-						// webm
-						// src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
 					}],
 					poster: "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg",
 				}
