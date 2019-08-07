@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar v-scroll="onScroll" app flat :color="menuBGColor">
-      <v-img :src="require('./assets/logo.png')"></v-img>
+      <img style="max-height:100%" :src="require('./assets/logo.png')">
     </v-app-bar>
     <v-content class="pa-0">
       <Index/>
@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     onScroll() {
-      this.menuBGColor = window.pageYOffset > 0 ? 'white' : 'transparent'
+      this.menuBGColor = window.pageYOffset > 0 ? '#D0D1D2' : 'transparent'
     }
   }
 };
