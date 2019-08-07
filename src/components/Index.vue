@@ -4,24 +4,37 @@
 			<v-img width="100%" min-height="100vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('../assets/first-block.jpg')">
 				<v-layout align-center justify-center row fill-height>
 					<v-flex xs12 sm6 class="px-10">
-						<div style="text-shadow: rgb(36, 32, 32) 0px 0px 6px; color: rgb(185, 185, 185);" class="display-3 text-uppercase ma-auto">Межкомнатные двери в Виннице</div>
-						<div style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline text-uppercase ma-auto">более 600 моделей в наличии в магазине</div>
+						<div style="text-shadow: rgb(36, 32, 32) 0px 0px 6px; color: rgb(185, 185, 185);" class="display-3 text-uppercase mx-auto mb-3 text-center">Межкомнатные двери в Виннице</div>
+						<div style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline text-uppercase mx-auto text-center">более 600 моделей в наличии в магазине</div>
+						<div class="my-2 text-center">
+							<v-btn color="#02ae1a" dark large>Получить каталог</v-btn>
+						</div>
 					</v-flex>
 					<v-flex xs12 sm6></v-flex>
 				</v-layout>
 			</v-img>
 		</v-layout>
+		<v-layout class="pa-10" wrap align-center justify-center fill-height>
+			<v-flex xs12 md3 v-for="(service, i) in services" :key="service.title + '_' + i">
+				<v-card flat style="max-width: 400px; min-height: 200px;" width="90%" class="ma-auto">
+					<v-img class="ma-auto" :src="service.photo" width="100px" height="100px"></v-img>
+					<v-card-title class="subtitle-1 text-uppercase">
+						<span class="ma-auto">{{service.title}}</span>
+					</v-card-title>
+				</v-card>
+			</v-flex>
+		</v-layout>
 		<v-layout wrap>
 			<video-player style="width: 100%" class="vjs-custom-skin vjs-big-play-centered" :options="playerOptions" :playsinline="true"></video-player>
 		</v-layout>
-		<v-layout wrap class="pa-10">
-			<div class="title font-weight-bold text-uppercase ma-auto">лидеры продаж</div>
-			<v-tabs centered :vertical="$vuetify.breakpoint.xsOnly">
+		<v-layout wrap class="pa-10" style="background: #d0d1d2">
+			<div class="display-1 font-weight-bold text-uppercase mx-auto mb-3">лидеры продаж</div>
+			<v-tabs color="#02ae1a" centered background-color="#d0d1d2" :vertical="$vuetify.breakpoint.xsOnly">
 				<v-tab v-for="(doorType, i) in doorTypes" :key="doorType.name + '_' + i">{{ doorType.name }}</v-tab>
-				<v-tab-item v-for="(doorType, i) in doorTypes" :key="doorType.name + '_' + i">					
+				<v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(doorType, i) in doorTypes" :key="doorType.name + '_' + i">					
 					<swiper :options="swiperOption">
 						<swiper-slide v-for="(door, i) in doorType.doors" :key="door.name + '_' + i">
-							<v-card width="200px" height="500px" class="ma-auto pa-2" flat>
+							<v-card width="200px" height="500px" class="ma-auto pa-2 text-center" flat>
 								<img :src="door.photo" height="400">
 								<v-card-title  primary-title>{{door.name}}</v-card-title>
 								<v-card-text>{{door.price}}</v-card-text>
@@ -33,7 +46,7 @@
 			</v-tabs>
 		</v-layout>
 		<v-layout class="pa-10" wrap align-center justify-center fill-height>
-			<v-flex xs12 class="title font-weight-bold text-uppercase text-center">наши преимущества</v-flex>
+			<v-flex xs12 class="display-1 font-weight-bold text-uppercase text-center mb-3">наши преимущества</v-flex>
 			<v-flex xs12 md4 v-for="(advantage, i) in advantages" :key="advantage.title + '_' + i">
 				<v-card style="max-width: 400px; min-height: 350px;" width="90%" class="ma-auto">
 					<v-img :src="advantage.photo" height="200px"></v-img>
@@ -187,6 +200,24 @@
 						photo: require('../assets/3.jpg'),
 					},
 				],
+				services: [
+					{
+						title: 'Замер в тот же день',
+						photo: require('../assets/11.png'),
+					},
+					{
+						title: 'Гарантия от 1 года',
+						photo: require('../assets/12.png'),
+					},
+					{
+						title: 'Доставка до 14 дней',
+						photo: require('../assets/13.png'),
+					},
+					{
+						title: 'Более 55 видов ручек',
+						photo: require('../assets/14.png'),
+					},
+				],
 				playerOptions: {
 					autoplay: true,
 					muted: true,
@@ -204,3 +235,8 @@
 		}
 	}
 </script>
+<style>
+	.swiper-pagination-bullet-active {
+		background: #02ae1a;
+	}
+</style>
