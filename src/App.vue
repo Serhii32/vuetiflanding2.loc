@@ -79,8 +79,8 @@
           <v-tabs color="#02ae1a" centered background-color="#d0d1d2" :vertical="$vuetify.breakpoint.xsOnly">
             <v-tab v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">{{ smartDecision.name }}</v-tab>
             <v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">         
-              <v-card class="ma-auto pa-2 text-center" flat>
-                <v-img :src="smartDecision.photo" width="100%"></v-img>
+              <v-card style="background: #d0d1d2" class="ma-auto pa-2 text-center" flat>
+                <img :src="smartDecision.photo" style="width:100%">
               </v-card>
             </v-tab-item>
           </v-tabs>
@@ -111,12 +111,8 @@
 </template>
 
 <script>
-// import Index from './components/Index';
 export default {
   name: 'App',
-  // components: {
-  //   Index,
-  // },
   data: () => ({
     callForm: false,
     menuBGColor: null,
