@@ -3,15 +3,21 @@
     <v-app-bar v-scroll="onScroll" app flat :color="menuBGColor" style="transition: 1s;">
       <img style="max-height:100%" :src="require('./assets/logo.png')">
       <v-spacer></v-spacer>
-      <div>
-        <p class="pa-0">Вінниця, вул. Батозька, 12</p>
-        <p class="pa-0">(067)666-28-66</p>
-      </div>
       <v-tooltip bottom>
-        <v-btn color="#02ae1a" dark large v-slot:activator="{ on }">
-          <v-icon color="primary" dark v-on="on">home</v-icon>
-        </v-btn>
-        <span>Tooltip</span>
+        <template v-slot:activator="{ on }">
+          <v-btn color="#02ae1a" dark large v-on="on">
+            <v-icon size="24px">fas fa-map-marker-alt</v-icon>
+          </v-btn>
+        </template>
+        <span>Вінниця, вул. Батозька, 12</span>
+      </v-tooltip>
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on }">
+          <v-btn color="#02ae1a" dark large v-on="on">
+            <v-icon size="24px">fas fa-phone</v-icon>
+          </v-btn>
+        </template>
+        <span>(067)666-28-66</span>
       </v-tooltip>
       <v-btn color="#02ae1a" dark large @click.stop="callForm = true">Заказать звонок</v-btn>
     </v-app-bar>
@@ -78,7 +84,7 @@
           <div class="display-1 font-weight-bold text-uppercase mx-auto mb-3">умные решения</div>
           <v-tabs color="#02ae1a" centered background-color="#d0d1d2" :vertical="$vuetify.breakpoint.xsOnly">
             <v-tab v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">{{ smartDecision.name }}</v-tab>
-            <v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">         
+            <v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">        
               <v-card style="background: #d0d1d2" class="ma-auto pa-2 text-center" flat>
                 <img :src="smartDecision.photo" style="width:100%">
               </v-card>
@@ -87,7 +93,7 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer dark padless>
+    <v-footer style="background: #02ae1a" padless>
       <v-card class="flex" flat tile>
         <v-card-title class="teal">
           <strong class="subheading">Get connected with us on social networks!</strong>
@@ -104,7 +110,12 @@
     </v-footer>
 
     <v-dialog v-model="callForm" max-width="290">
-    kkkkkkkkk
+      <v-form ref="form" v-model="valid" lazy-validation>
+        <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
+        <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+        <v-select v-model="select" :items="items" :rules="[v => !!v || 'Item is required']" label="Item" required></v-select>
+        <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">Validate</v-btn>
+      </v-form>
     </v-dialog>
 
   </v-app>
@@ -115,6 +126,23 @@ export default {
   name: 'App',
   data: () => ({
     callForm: false,
+    name: '',
+    nameRules: [
+      v => !!v || 'Имя обязательно',
+      v => (v && v.length <= 4) || 'Имя должно быть не менее 4 символов',
+    ],
+    email: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /^[0-9]*$/.test(v) || 'E-mail must be valid',
+    ],
+    select: null,
+    items: [
+      'Viber',
+      'Telegram',
+      'Facebook Messenger',
+      'Whatsapp',
+    ],
     menuBGColor: null,
     icons: [
       'fab fa-facebook',
@@ -320,7 +348,12 @@ export default {
   methods: {
     onScroll() {
       this.menuBGColor = window.pageYOffset > 0 ? 'white' : 'transparent'
-    }
+    },
+    validate () {
+      if (this.$refs.form.validate()) {
+        this.snackbar = true
+      }
+    },
   }
 };
 </script>
