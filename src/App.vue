@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn color="#02ae1a" dark large v-on="on">
+          <v-btn color="#02ae1a" dark large v-on="on" class="mr-2" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">
             <v-icon size="24px">fas fa-map-marker-alt</v-icon>
           </v-btn>
         </template>
@@ -13,7 +13,7 @@
       </v-tooltip>
       <v-tooltip bottom>
         <template v-slot:activator="{ on }">
-          <v-btn color="#02ae1a" dark large v-on="on">
+          <v-btn color="#02ae1a" dark large v-on="on" class="mr-2" href="tel:+380676662866" target="_blanc">
             <v-icon size="24px">fas fa-phone</v-icon>
           </v-btn>
         </template>
@@ -93,31 +93,19 @@
         </v-layout>
       </v-container>
     </v-content>
-    <v-footer style="background: #02ae1a" padless>
-      <v-card class="flex" flat tile>
-        <v-card-title class="teal">
-          <strong class="subheading">Get connected with us on social networks!</strong>
-          <v-spacer></v-spacer>
-          <v-btn v-for="icon in icons" :key="icon" class="mx-4" dark icon>
-            <v-icon size="24px">{{ icon }}</v-icon>
-          </v-btn>
-        </v-card-title>
-
-        <v-card-actions class="grey darken-3 justify-center">
-          {{ new Date().getFullYear() }} — <strong>Doors</strong>
-        </v-card-actions>
-      </v-card>
+    <v-footer absolute class="font-weight-medium">
+      <v-flex text-center xs12>
+        {{ new Date().getFullYear() }} — <strong>Simbion</strong>
+      </v-flex>
     </v-footer>
-
-    <v-dialog v-model="callForm" max-width="290">
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Name" required></v-text-field>
-        <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
-        <v-select v-model="select" :items="items" :rules="[v => !!v || 'Item is required']" label="Item" required></v-select>
-        <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">Validate</v-btn>
+    <v-dialog v-model="callForm" max-width="500">
+      <v-form class="text-center pa-4" style="background: white" ref="form" v-model="callForm" lazy-validation>
+        <v-text-field v-model="name" :counter="10" :rules="nameRules" label="Имя" required></v-text-field>
+        <v-text-field v-model="phone" :rules="phoneRules" label="Телефон" required></v-text-field>
+        <v-select v-model="select" :items="items" label="Мессенджер"></v-select>
+        <v-btn :disabled="!callForm" color="#02ae1a" class="mx-auto" @click="validate" dark large>Отправить</v-btn>
       </v-form>
     </v-dialog>
-
   </v-app>
 </template>
 
@@ -131,10 +119,10 @@ export default {
       v => !!v || 'Имя обязательно',
       v => (v && v.length <= 4) || 'Имя должно быть не менее 4 символов',
     ],
-    email: '',
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /^[0-9]*$/.test(v) || 'E-mail must be valid',
+    phone: '',
+    phoneRules: [
+      v => !!v || 'Телефон обязателен',
+      v => /^[0-9]*$/.test(v) || 'Телефон состоит только из чисел',
     ],
     select: null,
     items: [
@@ -350,10 +338,13 @@ export default {
       this.menuBGColor = window.pageYOffset > 0 ? 'white' : 'transparent'
     },
     validate () {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true
-      }
+      
     },
   }
 };
 </script>
+<style>
+  .v-tooltip__content.v-tooltip__content--fixed {
+    position: fixed !important;
+  }
+</style>
