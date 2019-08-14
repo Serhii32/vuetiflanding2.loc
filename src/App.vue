@@ -3,22 +3,28 @@
     <v-app-bar v-scroll="onScroll" app flat :color="menuBGColor" style="transition: 1s;">
       <img style="height:100%" :src="require('./assets/logo.png')">
       <v-spacer></v-spacer>
-      <v-tooltip bottom>
+      <p>
+        Вінниця, вул. Батозька, 12
+      </p>
+      <p>
+        (067)666-28-66
+      </p>
+      <!-- <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn color="#02ae1a" dark large v-on="on" class="mr-2" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">
             <v-icon size="24px">fas fa-map-marker-alt</v-icon>
           </v-btn>
         </template>
         <span>Вінниця, вул. Батозька, 12</span>
-      </v-tooltip>
-      <v-tooltip bottom>
+      </v-tooltip> -->
+      <!-- <v-tooltip bottom>
         <template v-slot:activator="{ on }">
           <v-btn color="#02ae1a" dark large v-on="on" class="mr-2" href="tel:+380676662866">
             <v-icon size="24px">fas fa-phone</v-icon>
           </v-btn>
         </template>
         <span>(067)666-28-66</span>
-      </v-tooltip>
+      </v-tooltip> -->
       <v-btn color="#02ae1a" dark large @click.stop="callForm = true">Заказать звонок</v-btn>
     </v-app-bar>
     <v-content class="pa-0">
@@ -32,8 +38,19 @@
                 <div class="my-2 text-center">
                   <v-btn color="#02ae1a" dark large href="./pdf/catalog.pdf" target="_blanc">Получить каталог</v-btn>
                 </div>
+                <v-layout>
+                  <v-flex xs6>
+                    <p>Все ваши двери в одном магазине</p>
+                    <p>Бесплатный замер и доставка</p>
+                  </v-flex>
+                  <v-flex xs6>
+                    <p>Закажи сейчас и получи 15% скидку</p>
+                    <p>120 дверей на выставке</p>
+                  </v-flex>
+                </v-layout>
               </v-flex>
-              <v-flex xs12 sm6></v-flex>
+              <v-flex xs12 sm6>
+              </v-flex>
             </v-layout>
           </v-img>
         </v-layout>
@@ -166,25 +183,15 @@ export default {
           name: 'Окрашенные двери',
           doors: [
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
-              price: '1000'
+              name: 'Ніцца-Бретань ПОО',
+              photo: require('./assets/d31.jpg'),
+              price: '5625'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
-              price: '1000'
-            },
-            {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
-              price: '1000'
-            },
-            {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
-              price: '1000'
-            },
+              name: 'AL 8',
+              photo: require('./assets/d32.jpg'),
+              price: '4326'
+            }
           ]
         },
         {
@@ -216,23 +223,23 @@ export default {
           name: 'Шпонированные',
           doors: [
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Базель 2 темний венге',
+              photo: require('./assets/d21.png'),
               price: '1000'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Барі ПО 4 мокко',
+              photo: require('./assets/d22.png'),
               price: '1000'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Віола ПГ дуб пастель',
+              photo: require('./assets/d23.png'),
               price: '1000'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Віола ПО сідий дуб з срібною патиною',
+              photo: require('./assets/d24.png'),
               price: '1000'
             },
           ]
@@ -241,24 +248,24 @@ export default {
           name: 'Двери из массива без покрытия',
           doors: [
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Версаль',
+              photo: require('./assets/d41.jpg'),
               price: '1000'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Катерина',
+              photo: require('./assets/d42.jpg'),
               price: '1000'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
+              name: 'Ранок',
+              photo: require('./assets/d43.jpg'),
               price: '1000'
             },
             {
-              name: 'Дверь',
-              photo: require('./assets/door.jpg'),
-              price: '1000'
+              name: 'Січень',
+              photo: require('./assets/d44.jpg'),
+              price: '55000'
             },
           ]
         }
