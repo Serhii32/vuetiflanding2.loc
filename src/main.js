@@ -1,6 +1,10 @@
 import Vue from 'vue'
+import './plugins/axios'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
+
+// import axios from 'axios'
+// Vue.use(axios)
 
 import VueVideoPlayer from 'vue-video-player'
 import 'video.js/dist/video-js.css'
