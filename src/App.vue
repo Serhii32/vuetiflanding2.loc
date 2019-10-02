@@ -10,9 +10,9 @@
         (067)666-28-66
       </p> -->
       <v-toolbar-items class="hidden-sm-and-down" style="max-height: 54px;">
-        <v-btn color="#02ae1a" dark large class="mr-2" href="tel:+380676662866">38(067)666-28-66</v-btn>
-        <v-btn color="#02ae1a" dark large class="mr-2" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">Винница, ул. Батожская, 12</v-btn>
-        <v-btn color="#02ae1a" dark large @click.stop="callForm2 = true">Заказать звонок</v-btn>
+        <v-btn color="#02ae1a" dark large class="mr-2 headerPhone" href="tel:+380676662866">38(067)666-28-66</v-btn>
+        <v-btn color="#02ae1a" dark large class="mr-2 headerAddress" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">Винница, ул. Батожская, 12</v-btn>
+        <v-btn color="#02ae1a" dark large class="headerCall" @click.stop="callForm2 = true">Заказать звонок</v-btn>
       </v-toolbar-items>
       <v-toolbar-items class="hidden-md-and-up" style="max-height: 54px;">
         <v-menu>
@@ -23,13 +23,13 @@
           </template>
           <v-list>
             <v-list-item>
-              <v-btn color="#02ae1a" dark large class="mr-2" href="tel:+380676662866">+38(067)666-28-66</v-btn>
+              <v-btn color="#02ae1a" dark large class="mr-2 headerPhone" href="tel:+380676662866">+38(067)666-28-66</v-btn>
             </v-list-item>
             <v-list-item>
-              <v-btn color="#02ae1a" dark large class="mr-2" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">Винница, ул. Батожская, 12</v-btn>
+              <v-btn color="#02ae1a" dark large class="mr-2 headerAddress" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">Винница, ул. Батожская, 12</v-btn>
             </v-list-item>
             <v-list-item>
-              <v-btn color="#02ae1a" dark large @click.stop="callForm2 = true">Заказать звонок</v-btn>
+              <v-btn color="#02ae1a" dark large class="headerCall" @click.stop="callForm2 = true">Заказать звонок</v-btn>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -54,7 +54,7 @@
     <v-content class="pa-0">
       <v-container fluid pa-0>
         <v-layout wrap>
-          <v-img width="100%" min-height="1000px" height="100vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('./assets/first-block.jpg')">
+          <v-img width="100%" min-height="1100px" height="100vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('./assets/first-block.jpg')">
             <v-layout align-center justify-center row fill-height>
               <v-flex xs12 sm6 class="pa-10">
                 <div style="text-shadow: rgb(0, 0, 0) 0px 0px 6px; color: rgb(255, 251, 251);" :class="'display-'+fontNumber+' mx-auto mb-3 text-center'">Межкомнатные двери в Виннице</div>
@@ -104,10 +104,10 @@
             <v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(doorType, i) in doorTypes" :key="doorType.name + '_' + i">         
               <swiper :options="swiperOption">
                 <swiper-slide v-for="(door, i) in doorType.doors" :key="door.name + '_' + i">
-                  <v-card width="230px" height="400px" class="ma-auto pa-2 text-center" flat>
+                  <v-card width="230px" height="480px" class="ma-auto pa-2 text-center" flat>
                     <img :src="door.photo" height="400">
                     <!-- <v-card-title  primary-title class="text-uppercase">{{door.name}}</v-card-title> -->
-                    <!-- <v-card-title primary-title style="color: #02ae1a">Цена: {{door.price}} грн.</v-card-title> -->
+                    <v-card-title v-if="door.price != '0'" primary-title style="color: #02ae1a">Цена: {{door.price}} грн.</v-card-title>
                   </v-card>
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
@@ -127,7 +127,7 @@
             </v-card>
           </v-flex>
           <v-flex xs12 class="my-2 text-center">
-            <v-btn color="#02ae1a" dark large @click.stop="callForm2 = true">Узнать стоимость и сроки</v-btn>
+            <v-btn color="#02ae1a" id="know-btn" dark large @click.stop="callForm3 = true">Узнать стоимость и сроки</v-btn>
           </v-flex>
         </v-layout>
         <v-layout wrap class="pa-10" style="background: #d0d1d2">
@@ -185,6 +185,13 @@
         <v-btn color="#02ae1a" class="mx-auto" @click="sendForm2" dark large>Отправить</v-btn>
       </v-form>
     </v-dialog>
+    <v-dialog v-model="callForm3" max-width="500">
+      <v-form class="text-center pa-4" style="background: white" ref="callForm3" lazy-validation>
+        <v-text-field v-model="name3" :rules="[v => !!v || 'Заполните поле']" label="Имя" required></v-text-field>
+        <v-text-field v-model="phone3" :rules="[v => !!v || 'Заполните поле']" label="Телефон" required></v-text-field>
+        <v-btn color="#02ae1a" class="mx-auto" @click="sendForm3" dark large>Отправить</v-btn>
+      </v-form>
+    </v-dialog>
     <v-dialog v-model="formSendResultModal" width="500" height="500">
       <div class="subtitle-2" style="background: white">{{resultModalMessage}}</div>
     </v-dialog>
@@ -197,12 +204,15 @@ export default {
   data: function () {
     return {
       callForm2: false,
+      callForm3: false,
       formSendResultModal: false,
       resultModalMessage: '',
       name1: '',
       name2: '',
+      name3: '',
       phone1: '',
       phone2: '',
+      phone3: '',
       menuBGColor: null,
       fontNumber: this.$vuetify.breakpoint.smAndDown?2:3,
       menuExtended: true,
@@ -240,29 +250,49 @@ export default {
           name: 'Окрашенные двери',
           doors: [
             {
-              name: 'Ніцца-Бретань ПОО',
+              name: 'Ницца-Бретань ПОО',
               photo: require('./assets/d31.jpg'),
-              price: '5625'
+              price: '6316'
             },
             {
-              name: 'AL 8',
+              name: 'AL-8',
               photo: require('./assets/d32.jpg'),
               price: '4326'
             },
             {
               name: 'Рим-Венециано',
               photo: require('./assets/d33.png'),
-              price: '0'
+              price: '6243'
             },
             {
               name: 'Барселона',
               photo: require('./assets/d34.png'),
-              price: '0'
+              price: '8661'
             },
             {
               name: 'FL-1',
               photo: require('./assets/d35.png'),
-              price: '0'
+              price: '5987'
+            },
+            {
+              name: 'Стандарт текстиль',
+              photo: require('./assets/d36.jpg'),
+              price: '2652'
+            },
+            {
+              name: 'Тифани ПОО песочная патина',
+              photo: require('./assets/d37.jpg'),
+              price: '4875'
+            },
+            {
+              name: 'Оливия ПО белый дуб',
+              photo: require('./assets/d38.jpg'),
+              price: '4365'
+            },
+            {
+              name: 'Горизонталь 3 (светлый дуб)',
+              photo: require('./assets/d39.jpg'),
+              price: '2683'
             }
           ]
         },
@@ -272,17 +302,17 @@ export default {
             {
               name: 'VND-01_EV',
               photo: require('./assets/d11.png'),
-              price: '4020'
+              price: '4181'
             },
             {
               name: 'SC-04_WY_black',
               photo: require('./assets/d12.png'),
-              price: '3999'
+              price: '4037'
             },
             {
               name: 'PD-01_WY',
               photo: require('./assets/d13.png'),
-              price: '3035'
+              price: '3043'
             },
             {
               name: 'PD-03_DG',
@@ -364,7 +394,7 @@ export default {
       advantages: [
         {
           title: 'Покупай модное',
-          description: 'Мы всегда в курсе актуальных тенденций мирового дизайна, которые представлены в нашых шоу-румах',
+          description: 'Мы всегда в курсе актуальных тенденций мирового дизайна, которые представлены в наших шоу-румах',
           photo: require('./assets/1.png'),
         },
         {
@@ -426,6 +456,7 @@ export default {
         this.axios.post('mail.php', {name: this.name1, phone: this.phone1 }).then(function(response) {
           if (response.data.status == 'success') {
             self.resultModalMessage = 'Заявка успешно отправлена';
+            window.ga('send', 'event', 'Заказать межкомнатные двери', 'Форма заявки');
           } else {
             self.resultModalMessage = 'Ошибка! Заявка не отправлена';
           }
@@ -441,6 +472,23 @@ export default {
           self.callForm2 = false;
           if (response.data.status == 'success') {
             self.resultModalMessage = 'Заявка успешно отправлена';
+            window.ga('send', 'event', 'Заказать звонок', 'Форма заявки');
+          } else {
+            self.resultModalMessage = 'Ошибка! Заявка не отправлена';
+          }
+          self.formSendResultModal = true;
+        });
+      }
+    },
+    sendForm3 () {
+      if (this.$refs.callForm3.validate()) {
+        this.snackbar = true;
+        var self = this;
+        this.axios.post('mail.php', {name: this.name3, phone: this.phone3 }).then(function(response) {
+          self.callForm3 = false;
+          if (response.data.status == 'success') {
+            self.resultModalMessage = 'Заявка успешно отправлена';
+            window.ga('send', 'event', 'Узнать стоимость и сроки', 'Форма заявки');
           } else {
             self.resultModalMessage = 'Ошибка! Заявка не отправлена';
           }

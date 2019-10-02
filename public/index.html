@@ -12,12 +12,17 @@
     <!-- Google Analytics -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
       ga('create', 'UA-109699881-1', 'auto');
+      ga('require', 'ringostat');
       ga('send', 'pageview');
+    </script>
+    <script type="text/javascript">
+      (function (d,s,u,e,p) {
+        p=d.getElementsByTagName(s)[0],e=d.createElement(s),e.async=1,e.src=u,p.parentNode.insertBefore(e, p);
+      })(document, 'script', 'https://script.ringostat.com/v4/b4/b41cfed62e648561e905428329163075f5707917.js');
     </script>
     <!-- End Google Analytics -->
   </head>
@@ -26,5 +31,22 @@
       <strong>We're sorry but vuetifylanding.loc doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <script defer>
+      window.addEventListener('load', function() { 
+        let headerPhones = document.getElementsByClassName("headerPhone");
+        for(let i = 0; i < headerPhones.length; i++) {
+          headerPhones[i].addEventListener("click", ga('send', 'event', 'Телефон', 'Click'));
+        }
+        let headerAddresses = document.getElementsByClassName("headerAddress");
+        for(let i = 0; i < headerAddresses.length; i++) {
+          headerAddresses[i].addEventListener("click", ga('send', 'event', 'Адрес', 'Click'));
+        }
+        let headerCalls = document.getElementsByClassName("headerCall");
+        for(let i = 0; i < headerCalls.length; i++) {
+          headerCalls[i].addEventListener("click", ga('send', 'event', 'Заказать звонок', 'Click'));
+        }
+        document.getElementById("know-btn").addEventListener("click", ga('send', 'event', 'Узнать стоимость и сроки', 'Click'));
+      });
+    </script>
   </body>
 </html>
