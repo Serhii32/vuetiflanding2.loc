@@ -10,7 +10,7 @@
         (067)666-28-66
       </p> -->
       <v-toolbar-items class="hidden-sm-and-down" style="max-height: 54px;">
-        <v-btn color="#02ae1a" dark large class="mr-2 headerPhone" href="tel:+380676662866">38(067)666-28-66</v-btn>
+        <v-btn color="#02ae1a" dark large class="mr-2 headerPhone" href="tel:+380671089497">38(067)108-94-97</v-btn>
         <v-btn color="#02ae1a" dark large class="mr-2 headerAddress" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">Винница, ул. Батожская, 12</v-btn>
         <v-btn color="#02ae1a" dark large class="headerCall" @click.stop="callForm2 = true">Заказать звонок</v-btn>
       </v-toolbar-items>
@@ -23,7 +23,7 @@
           </template>
           <v-list>
             <v-list-item>
-              <v-btn color="#02ae1a" dark large class="mr-2 headerPhone" href="tel:+380676662866">+38(067)666-28-66</v-btn>
+              <v-btn color="#02ae1a" dark large class="mr-2 headerPhone" href="tel:+380671089497">38(067)108-94-97</v-btn>
             </v-list-item>
             <v-list-item>
               <v-btn color="#02ae1a" dark large class="mr-2 headerAddress" href="https://goo.gl/maps/mpkzAz3mE4NVB4Vo8" target="_blanc">Винница, ул. Батожская, 12</v-btn>
@@ -169,9 +169,10 @@
       <v-layout wrap>
         <v-flex xs12 sm4 class="ma-auto text-center">
           <img style="max-height:100%" :src="require('./assets/logo.png')">
-          <p class="text-center" primary-title>(067)666-28-66</p>
+          <p class="text-center" primary-title>38(067)108-94-97</p>
           <p class="text-center" primary-title>Винница, ул. Батожская, 12</p>
           <p class="text-center" primary-title>Межкомнатные двери в Виннице на любой вкус и бюджет</p>
+          <p class="text-center" primary-title><a href="https://www.simbion.com.ua/vidi-dverey/mizhkimnatni-dveri">Посмотреть весь каталог дверей</a></p>
         </v-flex>
         <v-flex xs12 sm8 class="ma-auto">
           <iframe style="width:100%; height: 300px; border: none" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.7030808701147!2d28.504408315688035!3d49.24411837932713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b3871c6b805%3A0x7993a096cc1f58b5!2sBatozka+St%2C+12%2C+Vinnytsia%2C+Vinnyts&#39;ka+oblast%2C+21000!5e0!3m2!1sen!2sua!4v1565688755143!5m2!1sen!2sua" width="600"></iframe>
