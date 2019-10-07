@@ -57,7 +57,7 @@
           <v-img width="100%" min-height="1100px" height="100vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('./assets/first-block.jpg')">
             <v-layout align-center justify-center row fill-height>
               <v-flex xs12 sm6 class="pa-10">
-                <div style="text-shadow: rgb(0, 0, 0) 0px 0px 6px; color: rgb(255, 251, 251);" :class="'display-'+fontNumber+' mx-auto mb-3 text-center'">Межкомнатные двери в Виннице</div>
+                <div style="text-shadow: rgb(0, 0, 0) 0px 0px 6px; color: rgb(255, 251, 251);" :class="'display-'+fontNumber+' mx-auto mb-3 text-center'">Входные двери в Виннице</div>
                 <div style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto text-center pa-2">Самый большой выставочный зал-магазин в городе</div>
                 <v-layout>
                   <v-flex xs6>
@@ -75,7 +75,7 @@
               </v-flex>
               <v-flex xs12 sm6 class="px-10">
                 <v-form class="text-center pa-4 ma-auto" style="background: #ffffffde; border: 2px solid #02ae1a; border-radius: 20px; max-width: 500px" ref="callForm1" lazy-validation>
-                  <p class="headline mx-auto text-center pa-2">Заказать межкомнатные двери</p>
+                  <p class="headline mx-auto text-center pa-2">Заказать входные двери</p>
                   <v-text-field v-model="name1" :rules="[v => !!v || 'Заполните поле']" label="Имя" required></v-text-field>
                   <v-text-field v-model="phone1" :rules="[v => !!v || 'Заполните поле']" label="Телефон" required></v-text-field>
                   <v-btn color="#02ae1a" class="mx-auto" @click="sendForm1" dark large>Отправить</v-btn>
@@ -99,21 +99,16 @@
         </v-layout>
         <v-layout wrap class="pa-10" style="background: #d0d1d2">
           <div class="display-1 font-weight-bold text-uppercase mx-auto mb-3">лидеры продаж</div>
-          <v-tabs color="#02ae1a" centered show-arrows background-color="#d0d1d2">
-            <v-tab v-for="(doorType, i) in doorTypes" :key="doorType.name + '_' + i">{{ doorType.name }}</v-tab>
-            <v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(doorType, i) in doorTypes" :key="doorType.name + '_' + i">         
-              <swiper :options="swiperOption">
-                <swiper-slide v-for="(door, i) in doorType.doors" :key="door.name + '_' + i">
-                  <v-card width="230px" height="480px" class="ma-auto pa-2 text-center" flat>
-                    <img :src="door.photo" height="400">
-                    <!-- <v-card-title  primary-title class="text-uppercase">{{door.name}}</v-card-title> -->
-                    <v-card-title v-if="door.price != '0'" primary-title style="color: #02ae1a">Цена: {{door.price}} грн.</v-card-title>
-                  </v-card>
-                </swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-              </swiper>
-            </v-tab-item>
-          </v-tabs>
+          <swiper :options="swiperOption">
+            <swiper-slide v-for="(door, i) in doors" :key="door.name + '_' + i">
+              <v-card width="230px" height="480px" class="ma-auto pa-2 text-center" flat>
+                <img :src="door.photo" height="400">
+                <!-- <v-card-title  primary-title class="text-uppercase">{{door.name}}</v-card-title> -->
+                <v-card-title v-if="door.price != '0'" primary-title style="color: #02ae1a">Цена: {{door.price}} грн.</v-card-title>
+              </v-card>
+            </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
+          </swiper>
         </v-layout>
         <v-layout class="pa-10" wrap align-center justify-center fill-height>
           <v-flex xs12 class="display-1 font-weight-bold text-uppercase text-center mb-3">наши преимущества</v-flex>
@@ -131,15 +126,23 @@
           </v-flex>
         </v-layout>
         <v-layout wrap class="pa-10" style="background: #d0d1d2">
-          <div class="display-1 font-weight-bold text-uppercase mx-auto mb-3">умные решения</div>
-          <v-tabs color="#02ae1a" centered show-arrows background-color="#d0d1d2">
+          <div class="display-1 font-weight-bold text-uppercase mx-auto mb-3">КАЧЕСТВЕННАЯ ЗАЩИТА</div>
+          <!-- <v-tabs color="#02ae1a" centered show-arrows background-color="#d0d1d2">
             <v-tab v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">{{ smartDecision.name }}</v-tab>
             <v-tab-item class="pa-5" style="background: #d0d1d2" v-for="(smartDecision, i) in smartDecisions" :key="smartDecision.name + '_' + i">        
               <v-card style="background: #d0d1d2" class="ma-auto pa-2 text-center" flat>
                 <img :src="smartDecision.photo" style="width:100%; max-width:700px">
               </v-card>
             </v-tab-item>
-          </v-tabs>
+          </v-tabs> -->
+          <swiper :options="swiperOption">
+            <swiper-slide v-for="(door, i) in smartDecisions" :key="door.name + '_' + i">
+              <v-card width="230px" height="480px" class="ma-auto pa-2 text-center" flat>
+                <img :src="door.photo" height="400">
+              </v-card>
+            </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
+          </swiper>
         </v-layout>
         <v-layout wrap style="height: 50vh">
           <!-- <v-img width="100%" height="70vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('./assets/text-block.jpg')"> -->
@@ -149,7 +152,7 @@
                 <div style="text-shadow: rgb(255, 255, 255) 3px 3px 10px; color: rgb(0, 0, 0);" class="headline text-uppercase mx-auto text-center">Вы будете приятно удивлены нашим сервисом, ассортиментом и качеством дверей</div>
               </v-flex>
               <v-flex xs12 sm6 class="px-10 text-center" style="height: 100%">
-                <img style="max-height:100%" :src="require('./assets/text-block-image.jpeg')">
+                <img style="max-height:100%" :src="require('./assets/text-block-image.jpg')">
               </v-flex>
             </v-layout>
           <!-- </v-img> -->
@@ -171,8 +174,8 @@
           <img style="max-height:100%" :src="require('./assets/logo.png')">
           <p class="text-center" primary-title>38(067)108-94-97</p>
           <p class="text-center" primary-title>Винница, ул. Батожская, 12</p>
-          <p class="text-center" primary-title>Межкомнатные двери в Виннице на любой вкус и бюджет</p>
-          <p class="text-center" primary-title><a href="https://www.simbion.com.ua/vidi-dverey/mizhkimnatni-dveri">Посмотреть весь каталог дверей</a></p>
+          <p class="text-center" primary-title>Входные двери в Виннице на любой вкус и бюджет</p>
+          <p class="text-center" primary-title><a href="https://www.simbion.com.ua/vidi-dverey/vhidni-dveri">Посмотреть весь каталог дверей</a></p>
         </v-flex>
         <v-flex xs12 sm8 class="ma-auto">
           <iframe style="width:100%; height: 300px; border: none" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.7030808701147!2d28.504408315688035!3d49.24411837932713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b3871c6b805%3A0x7993a096cc1f58b5!2sBatozka+St%2C+12%2C+Vinnytsia%2C+Vinnyts&#39;ka+oblast%2C+21000!5e0!3m2!1sen!2sua!4v1565688755143!5m2!1sen!2sua" width="600"></iframe>
@@ -227,150 +230,95 @@ export default {
       smartDecisions: [
         {
           name: 'Рото-Дверь',
-          photo: require('./assets/s1.jpg'),
+          photo: require('./assets/l1.jpg'),
         },
         {
           name: 'Книжка',
-          photo: require('./assets/s2.jpg'),
+          photo: require('./assets/l2.jpg'),
         },
         {
           name: 'Фрамуги',
-          photo: require('./assets/s3.jpg'),
+          photo: require('./assets/l3.jpg'),
         },
         {
           name: 'Зеркало',
-          photo: require('./assets/s4.jpg'),
+          photo: require('./assets/l4.jpg'),
         },
         {
           name: 'Сдвижные',
-          photo: require('./assets/s5.jpg'),
+          photo: require('./assets/l5.jpg'),
+        },
+        {
+          name: 'Рото-Дверь',
+          photo: require('./assets/l6.jpg'),
+        },
+        {
+          name: 'Книжка',
+          photo: require('./assets/l7.jpg'),
+        },
+        {
+          name: 'Фрамуги',
+          photo: require('./assets/l8.jpg'),
+        },
+        {
+          name: 'Зеркало',
+          photo: require('./assets/l9.jpg'),
+        },
+        {
+          name: 'Сдвижные',
+          photo: require('./assets/l10.jpg'),
         }
       ],
-      doorTypes: [
+      doors: [
         {
-          name: 'Окрашенные двери',
-          doors: [
-            {
-              name: 'Ницца-Бретань ПОО',
-              photo: require('./assets/d31.jpg'),
-              price: '6316'
-            },
-            {
-              name: 'AL-8',
-              photo: require('./assets/d32.jpg'),
-              price: '4326'
-            },
-            {
-              name: 'Рим-Венециано',
-              photo: require('./assets/d33.png'),
-              price: '6243'
-            },
-            {
-              name: 'Барселона',
-              photo: require('./assets/d34.png'),
-              price: '8661'
-            },
-            {
-              name: 'FL-1',
-              photo: require('./assets/d35.png'),
-              price: '5987'
-            },
-            {
-              name: 'Стандарт текстиль',
-              photo: require('./assets/d36.jpg'),
-              price: '2652'
-            },
-            {
-              name: 'Тифани ПОО песочная патина',
-              photo: require('./assets/d37.jpg'),
-              price: '4875'
-            },
-            {
-              name: 'Оливия ПО белый дуб',
-              photo: require('./assets/d38.jpg'),
-              price: '4365'
-            },
-            {
-              name: 'Горизонталь 3 (светлый дуб)',
-              photo: require('./assets/d39.jpg'),
-              price: '2683'
-            }
-          ]
+          name: '',
+          photo: require('./assets/d1.png'),
+          price: '0'
         },
         {
-          name: 'Двери с ПВХ покрытием',
-          doors: [
-            {
-              name: 'VND-01_EV',
-              photo: require('./assets/d11.png'),
-              price: '4181'
-            },
-            {
-              name: 'SC-04_WY_black',
-              photo: require('./assets/d12.png'),
-              price: '4037'
-            },
-            {
-              name: 'PD-01_WY',
-              photo: require('./assets/d13.png'),
-              price: '3043'
-            },
-            {
-              name: 'PD-03_DG',
-              photo: require('./assets/d14.png'),
-              price: '2904'
-            },
-          ]
+          name: 'AL-8',
+          photo: require('./assets/d2.png'),
+          price: '0'
         },
         {
-          name: 'Шпонированные',
-          doors: [
-            {
-              name: 'Базель 2 темний венге',
-              photo: require('./assets/d21.png'),
-              price: '0'
-            },
-            {
-              name: 'Барі ПО 4 мокко',
-              photo: require('./assets/d22.png'),
-              price: '0'
-            },
-            {
-              name: 'Віола ПГ дуб пастель',
-              photo: require('./assets/d23.png'),
-              price: '0'
-            },
-            {
-              name: 'Віола ПО сідий дуб з срібною патиною',
-              photo: require('./assets/d24.png'),
-              price: '0'
-            },
-          ]
+          name: 'Рим-Венециано',
+          photo: require('./assets/d3.png'),
+          price: '0'
         },
         {
-          name: 'Двери из массива без покрытия',
-          doors: [
-            {
-              name: 'Версаль',
-              photo: require('./assets/d41.jpg'),
-              price: '0'
-            },
-            {
-              name: 'Катерина',
-              photo: require('./assets/d42.jpg'),
-              price: '0'
-            },
-            {
-              name: 'Ранок',
-              photo: require('./assets/d43.jpg'),
-              price: '0'
-            },
-            {
-              name: 'Січень',
-              photo: require('./assets/d44.jpg'),
-              price: '55000'
-            },
-          ]
+          name: 'Барселона',
+          photo: require('./assets/d4.png'),
+          price: '0'
+        },
+        {
+          name: 'FL-1',
+          photo: require('./assets/d5.png'),
+          price: '0'
+        },
+        {
+          name: 'Стандарт текстиль',
+          photo: require('./assets/d6.png'),
+          price: '0'
+        },
+        {
+          name: 'Тифани ПОО песочная патина',
+          photo: require('./assets/d7.png'),
+          price: '0'
+        },
+        {
+          name: 'Оливия ПО белый дуб',
+          photo: require('./assets/d8.png'),
+          price: '0'
+        },
+        {
+          name: 'Горизонталь 3 (светлый дуб)',
+          photo: require('./assets/d9.png'),
+          price: '0'
+        },
+        {
+          name: 'Горизонталь 3 (светлый дуб)',
+          photo: require('./assets/d10.png'),
+          price: '0'
         }
       ],
       swiperOption: {
