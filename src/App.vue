@@ -61,12 +61,12 @@
                 <div style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto text-center pa-2">Самый большой выставочный зал-магазин в городе</div>
                 <v-layout>
                   <v-flex xs6>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Все ваши двери в одном магазине</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Входные двери собственного производства</p>
                     <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Бесплатный замер и доставка</p>
                   </v-flex>
                   <v-flex xs6>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Закажи сейчас и получи 15% скидку</p>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> 120 дверей на выставке</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Премиум качество</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Фурнитура Kale</p>
                   </v-flex>
                 </v-layout>
                 <!-- <div class="my-2 text-center">
@@ -84,7 +84,7 @@
             </v-layout>
           </v-img>
         </v-layout>
-        <v-layout class="pa-10 white" wrap align-center justify-center fill-height>
+        <!-- <v-layout class="pa-10 white" wrap align-center justify-center fill-height>
           <v-flex xs12 md3 v-for="(service, i) in services" :key="service.title + '_' + i">
             <v-card flat style="max-width: 400px; min-height: 200px;" width="90%" class="ma-auto">
               <v-img class="ma-auto" :src="service.photo" width="100%" max-width="150px" max-height="150px"></v-img>
@@ -93,7 +93,7 @@
               </v-card-title>
             </v-card>
           </v-flex>
-        </v-layout>
+        </v-layout> -->
         <v-layout wrap>
           <video-player style="width: 100%; max-width: 1200px" class="vjs-custom-skin vjs-big-play-centered ma-auto" :options="playerOptions" :playsinline="true"></video-player>
         </v-layout>
@@ -116,9 +116,9 @@
             <v-card style="max-width: 400px; min-height: 350px;" width="90%" class="mx-auto my-2">
               <v-img :src="advantage.photo" height="200px"></v-img>
               <v-card-title  primary-title>
-                <span class="ma-auto">{{advantage.title}}</span>
+                <span class="ma-auto text-center">{{advantage.title}}</span>
               </v-card-title>
-              <v-card-text class="text-center">{{advantage.description}}</v-card-text>
+              <!-- <v-card-text class="text-center">{{advantage.description}}</v-card-text> -->
             </v-card>
           </v-flex>
           <v-flex xs12 class="my-2 text-center">
@@ -138,7 +138,7 @@
           <swiper :options="swiperOption">
             <swiper-slide v-for="(door, i) in smartDecisions" :key="door.name + '_' + i">
               <v-card width="230px" height="480px" class="ma-auto pa-2 text-center" flat>
-                <img :src="door.photo" height="400">
+                <img style="max-width: 100%;" :src="door.photo" height="400">
               </v-card>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
@@ -152,7 +152,7 @@
                 <div style="text-shadow: rgb(255, 255, 255) 3px 3px 10px; color: rgb(0, 0, 0);" class="headline text-uppercase mx-auto text-center">Вы будете приятно удивлены нашим сервисом, ассортиментом и качеством дверей</div>
               </v-flex>
               <v-flex xs12 sm6 class="px-10 text-center" style="height: 100%">
-                <img style="max-height:100%" :src="require('./assets/text-block-image.jpg')">
+                <img style="max-height:100%; max-width: 100%; height: 100%" :src="require('./assets/text-block-image.jpg')">
               </v-flex>
             </v-layout>
           <!-- </v-img> -->
@@ -342,17 +342,17 @@ export default {
       },
       advantages: [
         {
-          title: 'Покупай модное',
+          title: 'Платите не за имя, а за качество',
           description: 'Мы всегда в курсе актуальных тенденций мирового дизайна, которые представлены в наших шоу-румах',
-          photo: require('./assets/1.png'),
+          photo: require('./assets/1.jpg'),
         },
         {
-          title: 'Прямые поставки',
+          title: 'Всегда есть в наличии ходовые модели',
           description: 'Фирменные магазины Папа Карло и фабрики Wakewood',
           photo: require('./assets/2.jpg'),
         },
         {
-          title: 'Воплощаем идеи',
+          title: 'Толщина двери 10 см',
           description: 'Изготовим продукцию по индивидуальным параметрам и габаритам',
           photo: require('./assets/3.jpg'),
         },
@@ -373,7 +373,7 @@ export default {
         {
           title: 'Широкий выбор фурнитуры. Подберем под любой интерьер',
           photo: require('./assets/14.png'),
-        },
+        }
       ],
       playerOptions: {
         autoplay: true,
