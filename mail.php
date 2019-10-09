@@ -24,7 +24,7 @@ if ($requestBody === null) {
  
 header('Content-Type: application/json');
 if($requestBody['name']!==null && $requestBody['phone']!==null){ 
-    $to = 'serhii.bondarenko.ria@gmail.com';
+    $to = 'simbionvn@ukr.net';
     $subject = 'Callback';
     $message = '
         <html>

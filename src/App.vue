@@ -61,12 +61,12 @@
                 <div style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto text-center pa-2">Самый большой выставочный зал-магазин в городе</div>
                 <v-layout>
                   <v-flex xs6>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Входные двери собственного производства</p>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Бесплатный замер и доставка</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="title mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Входные двери собственного производства</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="title mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Бесплатный замер и доставка</p>
                   </v-flex>
                   <v-flex xs6>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Премиум качество</p>
-                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="headline mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Фурнитура Kale</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="title mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Премиум качество</p>
+                    <p style="text-shadow: rgb(30, 27, 27) 3px 3px 10px; color: rgb(255, 255, 255);" class="title mx-auto"><v-icon style="color: white">fas fa-check</v-icon> Фурнитура Kale</p>
                   </v-flex>
                 </v-layout>
                 <!-- <div class="my-2 text-center">
@@ -83,6 +83,40 @@
               </v-flex>
             </v-layout>
           </v-img>
+        </v-layout>
+
+        <v-layout class="pa-10" wrap align-center justify-center fill-height>
+          <v-flex xs12 class="display-1 font-weight-bold text-uppercase text-center mb-3">как купить двери</v-flex>
+          <v-flex xs12 md4 v-for="(point, i) in points" :key="point.title + '_' + i">
+            <v-card style="max-width: 400px; min-height: 180px; background: transparent;" width="90%" class="mx-auto my-2 text-center elevation-0">
+              <v-layout>
+                <v-flex style="color: #EEEEEE" xs2 class="display-1 ">
+                  {{point.number}}
+                </v-flex>
+                <v-flex xs10>
+                  <v-card-title  primary-title>
+                    <span class="ma-auto text-center">{{point.title}}</span>
+                  </v-card-title>
+                  <v-card-text v-if="typeof point.description !== 'undefined'" class="text-center">{{point.description}}</v-card-text>
+                  <v-btn v-if="typeof point.button !== 'undefined'" color="#02ae1a" dark large :href="point.link" target="_blanc">{{point.button}}</v-btn>
+                </v-flex>
+              </v-layout>
+            </v-card>
+          </v-flex>
+        </v-layout>
+
+        <v-layout wrap style="margin:20px">
+          <!-- <v-img width="100%" height="70vh" gradient="to right, rgba(0, 0, 0, 0.41), rgba(247, 248, 254, 0.31)" :src="require('./assets/text-block.jpg')"> -->
+            <v-layout align-center justify-center row fill-height>
+              <v-flex style="max-width: 700px" xs12 md6 class="px-10">
+                <div style="text-shadow: rgb(253, 253, 253) 0px 0px 6px; color: rgb(0, 0, 0);" class="headline text-uppercase mx-auto mb-3 text-center">Отличительной чертой дверей Симбион является их качество.</div>
+                <div style="text-shadow: rgb(255, 255, 255) 3px 3px 10px; color: rgb(0, 0, 0);" class="subtitle-1 mx-auto text-justify">Наша компания уже достаточно долго занимается изготовлением дверей. <br>Мы собрали и объединили специалистов с большим опытом роботы в разработке и производстве входных дверей.<br> Мы изучили новейшие разработки от ведущих производителей входных дверей в Украине и создали надежную конструкцию, которая не уступает по надежности и качеству входным дверям от других производителей.<v-btn v-show="showButton" color="#02ae1a" dark small @click.stop="toggleVisibility()">Читать дальше</v-btn><br><div v-show="showText"> Мы не стремимся сделать дешевые двери, мы хотим их сделать надежными и безопасными. В нашем выставочном зале вы увидите новые модели: эти входные двери созданы нами, не повторяются у конкурентов. Мы постоянно отслеживаем потребности рынка, актуальные цвета и материалы. как в новых моделях так и в разных их цветовых решениях.<br> Компания Симбион постоянно усовершенствует технологические процессы в изготовлении дверей. Благодаря этому нам удается выпускать более качественные и конкурентноспособные двери.<br> В своих дверях мы используем только качественные замки мировых брендов, такие как Kale.<br> Мы настолько уверенны в качестве своих дверей,что даем на них гарантию.<br> Мы стремимся изготавливать и доставлять вам только лучший продукт, и благодаря этому упорству мы за столь короткий срок смогли выйти в лидеры по производству входных дверей, обогнавший многих конкурентов, и поставляем входные двери Симбион в магазины и выставочные залы наших партнеров.</div></div>
+              </v-flex>
+              <v-flex xs12 md6 class="px-10 text-center" style="height: 100%">
+                <img style="max-height:700px; max-width: 100%;" :src="require('./assets/about-image.jpg')">
+              </v-flex>
+            </v-layout>
+          <!-- </v-img> -->
         </v-layout>
         <!-- <v-layout class="pa-10 white" wrap align-center justify-center fill-height>
           <v-flex xs12 md3 v-for="(service, i) in services" :key="service.title + '_' + i">
@@ -175,7 +209,7 @@
           <p class="text-center" primary-title>38(067)108-94-97</p>
           <p class="text-center" primary-title>Винница, ул. Батожская, 12</p>
           <p class="text-center" primary-title>Входные двери в Виннице на любой вкус и бюджет</p>
-          <p class="text-center" primary-title><a href="https://www.simbion.com.ua/vidi-dverey/vhidni-dveri">Посмотреть весь каталог дверей</a></p>
+          <p class="text-center" primary-title><a href="https://www.simbion.com.ua/vidi-dverey/vhidni-dveri" target="_blanc">Посмотреть весь каталог дверей</a></p>
         </v-flex>
         <v-flex xs12 sm8 class="ma-auto">
           <iframe style="width:100%; height: 300px; border: none" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.7030808701147!2d28.504408315688035!3d49.24411837932713!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472d5b3871c6b805%3A0x7993a096cc1f58b5!2sBatozka+St%2C+12%2C+Vinnytsia%2C+Vinnyts&#39;ka+oblast%2C+21000!5e0!3m2!1sen!2sua!4v1565688755143!5m2!1sen!2sua" width="600"></iframe>
@@ -207,6 +241,8 @@ export default {
   name: 'App',
   data: function () {
     return {
+      showButton: true,
+      showText: false,
       callForm2: false,
       callForm3: false,
       formSendResultModal: false,
@@ -357,6 +393,35 @@ export default {
           photo: require('./assets/3.jpg'),
         },
       ],
+      points: [
+        {
+          title: 'Выберите дверь',
+          description: 'В нашем каталоге вы сможете найти множество моделей на любой вкус.',
+          button: 'Каталог',
+          link: 'https://simbion.com.ua/vidi-dverey/vhidni-dveri',
+          number: '01',
+        },
+        {
+          title: 'Закажите замер',
+          description: 'Мы предоставляем качественные услуги замерщика.',
+          number: '02',
+        },
+        {
+          title: 'Оформите заказ',
+          description: 'Нас менеджер свяжется с вами и поможет принять верное решение.',
+          number: '03',
+        },
+        {
+          title: 'Доставка',
+          description: 'Мы доставляем дверь в любую точку Украины.',
+          number: '04',
+        },
+        {
+          title: 'Установка двери',
+          description: 'Наши мастера установят дверь быстро и качественно!',
+          number: '05',
+        }
+      ],
       services: [
         {
           title: 'Замер в тот же день. Не ждете, а сразу заказываете',
@@ -391,7 +456,7 @@ export default {
     }
   },
   mounted() {
-    this.onScroll()
+    this.onScroll();
   },
   methods: {
     onScroll() {
@@ -445,6 +510,10 @@ export default {
         });
       }
     },
+    toggleVisibility () {
+      this.showButton = !this.showButton;
+      this.showText = !this.showText;
+    }
   }
 };
 </script>
